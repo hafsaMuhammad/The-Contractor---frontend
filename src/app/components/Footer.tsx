@@ -1,76 +1,24 @@
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+"use client";
+import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
+import Contact from "./contact";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
-                <span className="text-white font-bold">CE</span>
-              </div>
-              <span className="font-bold text-xl">ConstructEq</span>
-            </div>
-            <p className="text-gray-300 mb-4">
-              Your trusted partner for construction equipment rental and supply. Professional service, quality equipment, competitive rates.
-            </p>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h3 className="font-semibold mb-4">Contact Us</h3>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-orange-500" />
-                <span className="text-gray-300">(555) 123-RENT</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-orange-500" />
-                <span className="text-gray-300">info@constructeq.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-orange-500" />
-                <span className="text-gray-300">123 Industrial Blvd, City, ST 12345</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Business Hours */}
-          <div>
-            <h3 className="font-semibold mb-4">Business Hours</h3>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Clock className="w-4 h-4 text-orange-500" />
-                <div className="text-gray-300">
-                  <div>Mon - Fri: 7:00 AM - 6:00 PM</div>
-                  <div>Saturday: 8:00 AM - 4:00 PM</div>
-                  <div>Sunday: Closed</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-semibold mb-4">Quick Links</h3>
-            <div className="space-y-2">
-              <a href="#" className="block text-gray-300 hover:text-orange-500 transition-colors">Equipment Catalog</a>
-              <a href="#" className="block text-gray-300 hover:text-orange-500 transition-colors">Rental Terms</a>
-              <a href="#" className="block text-gray-300 hover:text-orange-500 transition-colors">Safety Guidelines</a>
-              <a href="#" className="block text-gray-300 hover:text-orange-500 transition-colors">Customer Support</a>
-              <a href="#" className="block text-gray-300 hover:text-orange-500 transition-colors">Emergency Service</a>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="text-center text-gray-400">
-            <p>&copy; 2024 ConstructEq. All rights reserved. | Licensed & Insured Construction Equipment Rental</p>
-          </div>
+    <footer className="bg-[#0F172A] text-gray-300">
+      {/* Top CTA Section */}
+      <div className="bg-[#1E3A8A] text-center py-10 bg-gray-50">
+        <h2 className="text-2xl font-bold text-black">Ready to Get Started?</h2>
+        <p className="mt-2 text-gray-500">Contact us today for Products availability and pricing</p>
+        <div className="mt-6 flex justify-center gap-4">
+          <button className="bg-[#6bc3cf] hover:bg-[#3b7c8b] text-white px-6 py-2 rounded-lg font-semibold shadow-md">
+            Call (+20) 01132781
+          </button>
+         
         </div>
       </div>
+
+    <Contact/>
     </footer>
   );
 }

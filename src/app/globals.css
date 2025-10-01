@@ -24,3 +24,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.header{
+  background-color: #0c2132
+}
+.header-btn{
+  background-color: #6bc3cf
+}
+.header-btn:hover{
+  background-color: #3b7c8b
+}
+.logo-name{
+  color:#6bc3cf ;
+}
+
+
