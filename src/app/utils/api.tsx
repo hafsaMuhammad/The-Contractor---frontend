@@ -1,4 +1,4 @@
-export const API_URL = "http://127.0.0.1:8000/api";
+export const API_URL = "https://the-contractor.onrender.com/api";
 
 export function getAuthHeaders(): Record<string, string> {
   if (typeof window !== "undefined") {
