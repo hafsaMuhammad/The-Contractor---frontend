@@ -112,7 +112,7 @@ export default function OrderPage() {
                 value={form.contact_name}
                 onChange={handleChange}
                 required
-                className="border border-gray-200 rounded-lg px-3 py-2 w-full"
+                className="border border-gray-200 rounded-lg px-3 py-2 w-full  col-span-2"
               />
               <input
                 type="text"
@@ -121,7 +121,7 @@ export default function OrderPage() {
                 value={form.contact_phone}
                 onChange={handleChange}
                 required
-                className="border border-gray-200 rounded-lg px-3 py-2 w-full"
+                className="border border-gray-200 rounded-lg px-3 py-2 w-full  col-span-2"
               />
               <input
                 type="text"
