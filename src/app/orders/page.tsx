@@ -72,14 +72,16 @@ export default function OrderPage() {
           ...(token ? { "Authorization": `Token ${token}` } : {}),
         },
         body: JSON.stringify(orderPayload),
+        
       });
 
       if (!res.ok) {
         const errorText = await res.text(); 
         throw new Error(errorText);
       }
-      // setMessage(`✅ Order submitted successfully! Order ID: ${data.id}`);
-    router.push("/order-success");
+    const data = await res.json();
+    const orderId = data.order.id; 
+    router.push(`/order-success?orderId=${orderId}`);
     clearCart();
       
     } catch (err: any) {
