@@ -6,7 +6,6 @@ import { API_URL } from "../utils/api";
 import { useRouter } from "next/navigation";
 
 
-export const dynamic = "force-dynamic";
 
 
 export default function OrderPage() {
