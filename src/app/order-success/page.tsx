@@ -1,8 +1,9 @@
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
 
-export default function OrderSuccess({ searchParams }: { searchParams: { orderId?: string } }) {
-  const orderId = searchParams?.orderId;
+export default async function OrderSuccess({ searchParams }: { searchParams: Promise<{ orderId?: string }> }) {
+  const { orderId } = await searchParams;
+
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white px-4">
@@ -17,7 +18,7 @@ export default function OrderSuccess({ searchParams }: { searchParams: { orderId
         details and arrange delivery.
       </p>
 
-      <div className="mt-6 inline-block rounded-lg bg-gray-100 px-6 py-3 mb-3">
+      <div className="mt-6 inline-block rounded-lg bg-gray-100 px-6 py-3 mb-3 text-center">
         <p className="text-sm font-medium text-gray-600">Order Number</p>
         <p className="mt-1 text-lg font-semibold text-[#3b7c8b]">
           #{orderId}
@@ -30,3 +31,4 @@ export default function OrderSuccess({ searchParams }: { searchParams: { orderId
     </div>
   );
 }
+
