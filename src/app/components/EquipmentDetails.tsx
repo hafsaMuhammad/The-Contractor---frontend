@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { API_URL } from "../utils/api";
 import Image from "next/image";
 import { useCart } from "./cart-context";
+import { dummyProducts } from "../data/dummyProducts";
 
 
 
@@ -38,8 +39,8 @@ type Product = {
   description: string;
   image?: string;
   category: Category | string; 
-  unit : Unit | string; 
-  options: Option[];
+  unit? : Unit | string; 
+  options?: Option[];
 };
 
 
@@ -55,14 +56,26 @@ export default function EquipmentDetail() {
   useEffect(() => {
     if (id) {
       fetch(`${API_URL}/products/${id}/`)
-        .then((res) => res.json())
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("API unavailable");
+          }
+
+          return res.json();
+        })
         .then((data) => {
           console.log("API response for single product:", data);
           setProduct(data.product);
         })
-        .catch(console.error);
+        .catch(() => {
+          console.log("Using dummy product");
 
+          const dummyProduct = dummyProducts.find(
+            (p) => p.id === Number(id)
+          );
 
+          setProduct(dummyProduct || null);
+        });
     }
   }, [id]);
 
