@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { API_URL } from "../utils/api";
 import { useCart } from "./cart-context";
-
-
+import { dummyProducts } from "../data/dummyProducts";
+import { dummyCategories } from "../data/dummyCategories";
 
 type Category = {
   id: number;
@@ -36,12 +36,21 @@ export default function FeaturedEquipment() {
 
   useEffect(() => {
     fetch(`${API_URL}/products/`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Parsed JSON:", data);
-        setProducts(data.products || []);
-      })
-      .catch(console.error);
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("API unavailable");
+      }
+
+      return res.json();
+    })
+    .then((data) => {
+      setProducts(data.products || []);
+    })
+    .catch(() => {
+      console.log("Using dummy products");
+      setProducts(dummyProducts);
+    });
+
   }, []);
 
 
@@ -52,7 +61,9 @@ export default function FeaturedEquipment() {
     fetch(`${API_URL}/categories/`)
       .then((res) => res.json())
       .then((data) => setCategories(data.categories || []))
-      .catch(console.error);
+     .catch(() => {
+  setCategories(dummyCategories);
+});
   }, []);
 
   // Filtered products

@@ -30,7 +30,7 @@ export default function Contact() {
         <div>
           <h3 className="text-white font-semibold mb-4">Contact Us</h3>
           <ul className="space-y-2 text-gray-400">
-            <li className="flex items-center gap-2"><PhoneIcon className="h-5 w-5" /> (+20) 0112324</li>
+            <li className="flex items-center gap-2"><PhoneIcon className="h-5 w-5" /> (+965) 904567890</li>
             <li className="flex items-center gap-2"><EnvelopeIcon className="h-5 w-5" /> info@contractor.com</li>
             <li className="flex items-center gap-2"><MapPinIcon className="h-5 w-5" /> 123 Industrial Blvd, City, ST 12345</li>
           </ul>
