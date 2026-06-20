@@ -29,42 +29,58 @@ type Product = {
 
 export default function FeaturedEquipment() {
 
+const [products] = useState<Product[]>(dummyProducts);
 
-  const [products, setProducts] = useState<Product[]>([]);
+const [categories] = useState<Category[]>([
+  {
+    id: 1,
+    name: "Construction Materials",
+  },
+  {
+    id: 2,
+    name: "Heavy Equipment",
+  },
+  {
+    id: 3,
+    name: "Site Equipment",
+  },
+]);
+
+  // const [products, setProducts] = useState<Product[]>([]);
   const [search, setSearch] = useState("");
   const { addToCart } = useCart();
 
-  useEffect(() => {
-    fetch(`${API_URL}/products/`)
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error("API unavailable");
-      }
+  // useEffect(() => {
+  //   fetch(`${API_URL}/products/`)
+  //   .then((res) => {
+  //     if (!res.ok) {
+  //       throw new Error("API unavailable");
+  //     }
 
-      return res.json();
-    })
-    .then((data) => {
-      setProducts(data.products || []);
-    })
-    .catch(() => {
-      console.log("Using dummy products");
-      setProducts(dummyProducts);
-    });
+  //     return res.json();
+  //   })
+  //   .then((data) => {
+  //     setProducts(data.products || []);
+  //   })
+  //   .catch(() => {
+  //     console.log("Using dummy products");
+  //     setProducts(dummyProducts);
+  //   });
 
-  }, []);
+  // }, []);
 
 
-  const [categories, setCategories] = useState<Category[]>([]);
+  // const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<number | "">("");
 
-  useEffect(() => {
-    fetch(`${API_URL}/categories/`)
-      .then((res) => res.json())
-      .then((data) => setCategories(data.categories || []))
-     .catch(() => {
-  setCategories(dummyCategories);
-});
-  }, []);
+//   useEffect(() => {
+//     fetch(`${API_URL}/categories/`)
+//       .then((res) => res.json())
+//       .then((data) => setCategories(data.categories || []))
+//      .catch(() => {
+//   setCategories(dummyCategories);
+// });
+//   }, []);
 
   // Filtered products
   const filtered = products.filter((p) => {

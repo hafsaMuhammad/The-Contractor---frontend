@@ -53,40 +53,59 @@ export default function EquipmentDetail() {
 
 
 
+  // useEffect(() => {
+  //   if (id) {
+  //     fetch(`${API_URL}/products/${id}/`)
+  //       .then((res) => {
+  //         if (!res.ok) {
+  //           throw new Error("API unavailable");
+  //         }
+
+  //         return res.json();
+  //       })
+  //       .then((data) => {
+  //         console.log("API response for single product:", data);
+  //         setProduct(data.product);
+  //       })
+  //       .catch(() => {
+  //         console.log("Using dummy product");
+
+  //         const dummyProduct = dummyProducts.find(
+  //           (p) => p.id === Number(id)
+  //         );
+
+  //         setProduct(dummyProduct || null);
+  //       });
+  //   }
+  // }, [id]);
+
   useEffect(() => {
-    if (id) {
-      fetch(`${API_URL}/products/${id}/`)
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error("API unavailable");
-          }
+  if (!id) return;
 
-          return res.json();
-        })
-        .then((data) => {
-          console.log("API response for single product:", data);
-          setProduct(data.product);
-        })
-        .catch(() => {
-          console.log("Using dummy product");
+  const product = dummyProducts.find(
+    (p) => p.id === Number(id)
+  );
 
-          const dummyProduct = dummyProducts.find(
-            (p) => p.id === Number(id)
-          );
+  setProduct(product || null);
+}, [id]);
 
-          setProduct(dummyProduct || null);
-        });
-    }
-  }, [id]);
 
   if (!product) {
     return (
-      <div className="text-center text-gray-500 py-20">
-        Loading product details...
+      <div className="text-center py-20">
+        <h2 className="text-xl font-medium text-gray-700">
+          Product not found
+        </h2>
+
+        <Link
+          href="/products"
+          className="text-[#3b7c8b] hover:underline mt-4 inline-block"
+        >
+          Back to Products
+        </Link>
       </div>
     );
   }
-
 
   const displayPrice = selectedOption ? selectedOption.price : product.price_per_unit;
 
